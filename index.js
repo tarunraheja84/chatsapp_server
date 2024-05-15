@@ -1,22 +1,11 @@
-const express = require('express');
-const http = require('http');
-const cors = require('cors');
 const { Message, User } = require('./db');
 require('dotenv').config();
 
-const app = express();
-const server = http.createServer(app);
-const io = require('socket.io')(server, {
+const io = require('socket.io')(10000, {
   cors: {
     origin: "*",
-    methods: ["GET", "POST"],
-    credentials: true
   }
 });
-
-app.use(cors());
-app.use(express.json());
-
 
 const MESSAGES_PER_PAGE = 15;
 
@@ -53,6 +42,4 @@ io.on('connection', (socket) => {
 
 });
 
-server.listen(10000, () => {
-  console.log('Server running on PORT 10000');
-});
+console.log('Server running on PORT 10000');
