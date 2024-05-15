@@ -1,18 +1,18 @@
 const express = require('express');
 const http = require('http');
-const socketIo = require('socket.io');
+const io = require('socket.io')(server, {
+  cors: {
+    origin: "*",
+    methods: ["GET", "POST"],
+    credentials: true
+  }
+});
 const cors = require('cors');
 const { Message, User } = require('./db');
 require('dotenv').config();
 
 const app = express();
 const server = http.createServer(app);
-const io = socketIo(server, {
-  cors: {
-    origin: '*',
-    methods: ['GET', 'POST']
-  }
-});
 
 app.use(cors());
 app.use(express.json());
