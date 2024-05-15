@@ -1,5 +1,11 @@
 const express = require('express');
 const http = require('http');
+const cors = require('cors');
+const { Message, User } = require('./db');
+require('dotenv').config();
+
+const app = express();
+const server = http.createServer(app);
 const io = require('socket.io')(server, {
   cors: {
     origin: "*",
@@ -7,12 +13,6 @@ const io = require('socket.io')(server, {
     credentials: true
   }
 });
-const cors = require('cors');
-const { Message, User } = require('./db');
-require('dotenv').config();
-
-const app = express();
-const server = http.createServer(app);
 
 app.use(cors());
 app.use(express.json());
