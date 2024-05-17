@@ -15,7 +15,6 @@ ChatsApp is a WhatsApp clone built using Node.js and Socket.io in the backend. T
 - Socket.io
 - MongoDB
 - Mongoose
-- JWT Authentication
 - dotenv
 
 ## Installation
